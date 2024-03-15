@@ -1,0 +1,29 @@
+
+<h2>Subastas</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Usuario</th>
+      <th>Cantidad</th>
+      <th>Evento</th>
+      <th>Precio Inicial</th>
+      <th>Precio Actual</th>
+      <th>Activa</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let subasta of subastas">
+      <td>{{ subasta.id }}</td>
+      <td>{{ subasta.nombre }}</td>
+      <td>{{ subasta.descripcion }}</td>
+      <td>{{ subasta.usuario }}</td>
+      <td>{{ subasta.cantidad }}</td>
+      <td>{{ subasta.precioInicial }}</td>
+      <td>{{ subasta.precioActual }}</td>
+      <td>{{ subasta.activa }}</td>
+  </tbody>
+</table>

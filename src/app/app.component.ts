@@ -1,13 +1,15 @@
+import { GgComponent } from './gg/gg.component';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ListaSubastasComponent } from './lista-subastas/lista-subastas.component';
+
 
 @Component({
+  standalone:false,
+  //imports: [GgComponent,ListaSubastasComponent],
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ARSW_Proyecto_subastas_frontend';
+  title = 'subastas-frontend';
 }
