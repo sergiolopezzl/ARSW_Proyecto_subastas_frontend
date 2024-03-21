@@ -1,5 +1,5 @@
 {
-  "name": "arsw-proyecto-subastas-frontend",
+  "name": "subastas-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ARSW_Proyecto_subastas_frontend": "node dist/arsw-proyecto-subastas-frontend/server/server.mjs"
+    "serve:ssr:subastas-frontend": "node dist/subastas-frontend/server/server.mjs"
   },
   "private": true,
   "dependencies": {

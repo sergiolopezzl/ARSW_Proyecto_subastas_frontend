@@ -1,30 +1,22 @@
-// app.module.ts
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-//import { AppRoutingModule } from './app.routes';
-import { AppComponent } from './app.component';
-import { ListaSubastasComponent } from './lista-subastas/lista-subastas.component';
-import { HttpClientModule } from '@angular/common/http';
-import { GgComponent } from './gg/gg.component';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import {ListaSubastasComponent} from "./lista-subastas/lista-subastas.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    GgComponent,
     ListaSubastasComponent
   ],
   imports: [
     BrowserModule,
-    //AppRoutingModule,
-    HttpClientModule
+    AppRoutingModule
   ],
-  providers: [],
-  exports:[
-    GgComponent,
-    AppComponent,
-    ListaSubastasComponent
+  providers: [
+    provideClientHydration()
   ],
-  bootstrap: [AppComponent] // AppComponent es el componente principal de arranque
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

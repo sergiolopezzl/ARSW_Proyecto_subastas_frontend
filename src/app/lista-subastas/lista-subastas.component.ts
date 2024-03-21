@@ -1,13 +1,11 @@
-import { SubastasService } from '../subastas.service';
-import { Subastas } from '../subastas';
+import { SubastasService } from '../subastas/subastas.service';
+import { Subastas } from '../subastas/subastas';
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-lista-subastas',
-  //standalone:true,
-  //imports:[HttpClientModule],
   templateUrl: './lista-subastas.component.html',
   styleUrls: ['./lista-subastas.component.css']
 })

@@ -3,9 +3,19 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ARSW_Proyecto_subastas_frontend": {
+    "subastas-frontend": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/arsw-proyecto-subastas-frontend",
+            "outputPath": "dist/subastas-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ARSW_Proyecto_subastas_frontend:build:production"
+              "buildTarget": "subastas-frontend:build:production"
             },
             "development": {
-              "buildTarget": "ARSW_Proyecto_subastas_frontend:build:development"
+              "buildTarget": "subastas-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ARSW_Proyecto_subastas_frontend:build"
+            "buildTarget": "subastas-frontend:build"
           }
         },
         "test": {
