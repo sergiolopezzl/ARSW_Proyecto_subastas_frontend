@@ -1,12 +1,12 @@
 /* Estilo para la barra de navegación */
 .navbar {
   background-color: #ffffff; /* Color de fondo */
-  box-shadow: 0px 0px 07px #5f5f5f; /* Sombra */
+  box-shadow: 0px 0px 10px #000000; /* Sombra */
 
 }
 
 .navbar-brand {
-  color: #0084ff; /* Color del texto del logotipo */
+  color: #ff7b00; /* Color del texto del logotipo */
   font-weight: bold; /* Grosor de la fuente */
   font-size: 30px; /* Tamaño de la fuente */
 
@@ -14,26 +14,26 @@
 
 /* Línea divisoria entre el logo y los enlaces */
 .divider {
-  border-top: 1px solid #0084ff; /* Color de la línea */
+  border-top: 1px solid #ff7b00; /* Color de la línea */
   margin-top: 10px; /* Espacio superior */
   margin-bottom: 10px; /* Espacio inferior */
 }
 
 .navbar-nav .nav-link {
   font-size: 20px; /* Tamaño de la fuente para los enlaces */
-  border-top: 1px solid #0084ff;
+  border-top: 1px solid #ff7b00;
   color: #ffffff; /* Color del texto del elemento activo */
 }
 
 .navbar-nav .nav-link:hover {
-  color: #0084ff; /* Color del texto de los enlaces al pasar el mouse */
+  color: #ff7b00; /* Color del texto de los enlaces al pasar el mouse */
 }
 
 /* Estilo para el menú desplegable */
 .dropdown-menu {
   background-color: #777272; /* Color de fondo */
-  border: none; /* Borde */
-  box-shadow: 1px 8px 10px rgba(255, 3, 3, 0.1); /* Sombra */
+  border: 1px; /* Borde */
+
 }
 
 /* Estilo para el elemento de la barra de navegación activo */
@@ -42,3 +42,8 @@
   font-weight: bold; /* Grosor de la fuente */
   text-decoration: underline; /* Subrayado */
 }
+.navbar-toggler-icon{
+  color: #ffffff;
+
+}
+

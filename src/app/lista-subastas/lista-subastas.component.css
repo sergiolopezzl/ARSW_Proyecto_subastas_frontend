@@ -33,10 +33,12 @@
 }
 
 .activo {
+  font-size: 10px;
   background-color: #4CAF50; /* Verde */
 }
 
 .inactivo {
+  font-size: 10px;
   background-color: #f44336; /* Rojo */
 }
 
@@ -71,7 +73,7 @@
 .btn {
   display: inline-block;
   padding: 10px 30px; /* Aumenta el padding para hacer el botón más grande */
-  background-color: #0084ff;
+  background-color: #ff7b00d3;
   color: #fff;
   text-decoration: none;
   border-radius: 20px; /* Mayor radio para hacerlo más redondeado */
@@ -82,7 +84,7 @@
 }
 
 .btn:hover {
-  background-color: #e9a9a9;
+  background-color: #ff7b008a;
 }
 
 /* Estilos para la línea divisoria */
