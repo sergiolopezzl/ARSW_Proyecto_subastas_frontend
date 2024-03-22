@@ -1,12 +1,24 @@
 /* Estilo para la barra de navegación */
 .navbar {
   background-color: #ffffff; /* Color de fondo */
-  box-shadow: 0px 2px 4px rgba(255, 0, 0, 0.1); /* Sombra */
+  box-shadow: 1px 4px 20px rgba(255, 0, 234, 0.1); /* Sombra */
 }
 
 .navbar-brand {
   color: #ff00c8; /* Color del texto del logotipo */
   font-weight: bold; /* Grosor de la fuente */
+  font-size: 30px; /* Tamaño de la fuente */
+}
+
+/* Línea divisoria entre el logo y los enlaces */
+.divider {
+  border-top: 2px solid #ff00c8; /* Color de la línea */
+  margin-top: 10px; /* Espacio superior */
+  margin-bottom: 10px; /* Espacio inferior */
+}
+
+.navbar-nav .nav-link {
+  font-size: 20px; /* Tamaño de la fuente para los enlaces */
 }
 
 .navbar-nav .nav-link:hover {
@@ -17,7 +29,7 @@
 .dropdown-menu {
   background-color: #ffffff; /* Color de fondo */
   border: none; /* Borde */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  box-shadow: 1px 8px 10px rgba(255, 3, 3, 0.1); /* Sombra */
 }
 
 /* Estilo para el elemento de la barra de navegación activo */
