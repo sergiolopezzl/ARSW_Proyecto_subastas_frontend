@@ -1,36 +1,15 @@
-
-<body>
-  <div class="container mt-5">
-    <h2 class="text-center mb-4">Subastas Activas</h2>
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Usuario</th>
-            <th>Cantidad</th>
-            <th>Evento</th>
-            <th>Precio Inicial</th>
-            <th>Precio Actual</th>
-            <th>Activa</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let subasta of subastas">
-            <td>{{ subasta.id }}</td>
-            <td>{{ subasta.nombre }}</td>
-            <td>{{ subasta.descripcion }}</td>
-            <td>{{ subasta.usuario }}</td>
-            <td>{{ subasta.cantidad }}</td>
-            <td>{{ subasta.precioInicial }}</td>
-            <td>{{ subasta.precioActual }}</td>
-            <td>{{ subasta.activa }}</td>
-
-        </tbody>
-      </table>
+<div class="container">
+  <div class="subasta" *ngFor="let subasta of subastas">
+    <h3>{{ subasta.nombre }}</h3>
+    <p><strong>Descripción:</strong> {{ subasta.descripcion }}</p>
+    <p><strong>Usuario:</strong> {{ subasta.usuario }}</p>
+    <p><strong>Cantidad:</strong> {{ subasta.cantidad }}</p>
+    <p><strong>Evento:</strong> {{ subasta.evento }}</p>
+    <p class="precio"><strong>Precio Inicial:</strong> {{ subasta.precioInicial }}</p>
+    <p class="precio"><strong>Precio Actual:</strong> {{ subasta.precioActual }}</p>
+    <p><strong>Activa:</strong> {{ subasta.activa }}</p>
+    <div class="acciones">
+      <a href="#" class="btn">Acción</a>
     </div>
   </div>
-</body>
-
+</div>
