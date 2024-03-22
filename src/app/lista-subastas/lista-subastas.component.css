@@ -1,0 +1,65 @@
+/* Estilos personalizados */
+body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  border: none !important;
+}
+
+th {
+  background-color: #6c757d;
+  color: #7c1717;
+  font-weight: bold;
+}
+
+td {
+  background-color: #f3f4f6;
+}
+
+/* Estilos para hacer la tabla más bonita y morada */
+.container {
+  background-color: #e0ccde;
+}
+
+h2 {
+  color: #000000;
+}
+
+.table {
+  border: 1px solid #6c757d;
+}
+
+.table th,
+.table td {
+  border-color: #6c757d;
+}
+
+.table th {
+  background-color: #745386;
+  color: #000000;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #ff000d;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef;
+}

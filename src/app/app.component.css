@@ -1,0 +1,34 @@
+/* Estilos personalizados */
+body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  border: none !important;
+}
+
+th {
+  background-color: #6c757d;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+td {
+  background-color: #f3f4f6;
+}

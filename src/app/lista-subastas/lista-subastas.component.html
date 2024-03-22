@@ -1,29 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subastas</title>
+  <!-- Enlace al archivo CSS -->
+  <link rel="stylesheet" href="lista-subastas.component.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Subastas</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Usuario</th>
+            <th>Cantidad</th>
+            <th>Evento</th>
+            <th>Precio Inicial</th>
+            <th>Precio Actual</th>
+            <th>Activa</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subasta of subastas">
+            <td>{{ subasta.id }}</td>
+            <td>{{ subasta.nombre }}</td>
+            <td>{{ subasta.descripcion }}</td>
+            <td>{{ subasta.usuario }}</td>
+            <td>{{ subasta.cantidad }}</td>
+            <td>{{ subasta.precioInicial }}</td>
+            <td>{{ subasta.precioActual }}</td>
+            <td>{{ subasta.activa }}</td>
 
-<h2>Subastas</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Usuario</th>
-      <th>Cantidad</th>
-      <th>Evento</th>
-      <th>Precio Inicial</th>
-      <th>Precio Actual</th>
-      <th>Activa</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let subasta of subastas">
-      <td>{{ subasta.id }}</td>
-      <td>{{ subasta.nombre }}</td>
-      <td>{{ subasta.descripcion }}</td>
-      <td>{{ subasta.usuario }}</td>
-      <td>{{ subasta.cantidad }}</td>
-      <td>{{ subasta.precioInicial }}</td>
-      <td>{{ subasta.precioActual }}</td>
-      <td>{{ subasta.activa }}</td>
-  </tbody>
-</table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
