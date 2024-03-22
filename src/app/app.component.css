@@ -1,10 +1,11 @@
 /* Estilos personalizados */
 body {
-  background-color: #f8f9fa;
+  background-color: #ebebeb;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   color: #000000; /* Color del texto */
+
 }
