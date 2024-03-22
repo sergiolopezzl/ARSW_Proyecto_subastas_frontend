@@ -1,8 +1,14 @@
-import { Routes } from '@angular/router';
-import { ListaSubastasComponent } from './lista-subastas/lista-subastas.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CrearSubastaComponent } from './crear-subasta/crear-subasta.component'; // Importa el componente de la página "crear"
 
-export const routes: Routes = [
-  { path: '', redirectTo: '/subastas', pathMatch: 'full' }, // Redirige al componente de subastas por defecto
-  { path: 'subastas', component: ListaSubastasComponent }, // Ruta para mostrar la lista de subastas
-  // Puedes agregar más rutas aquí según las necesidades de tu aplicación
+const routes: Routes = [
+  // Otras rutas existentes...
+  { path: 'crear', component: CrearSubastaComponent }, // Define la ruta para la página "crear"
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

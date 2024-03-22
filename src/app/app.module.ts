@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {ListaSubastasComponent} from "./lista-subastas/lista-subastas.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { CrearSubastaComponent } from './crear-subasta/crear-subasta.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,10 +17,11 @@ import { CrearSubastaComponent } from './crear-subasta/crear-subasta.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    //provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })
