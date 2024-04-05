@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="subasta" *ngFor="let subasta of subastas">
+  <div *ngIf="subastaId !== null && subasta && esSubastaCorrecta(subasta)" class="subasta">
+    <!-- Verifica que subasta esté definida antes de mostrar sus detalles -->
     <div class="estado-container">
       <span class="estado" [ngClass]="{ 'activo': subasta.activa, 'inactivo': !subasta.activa }">{{ subasta.activa ? 'Activa' : 'Inactiva' }}</span>
     </div>
@@ -16,8 +17,11 @@
       <div class="precio">{{ subasta.precioActual }}</div>
     </div>
     <div class="acciones">
-      <!-- Convierte subasta.id a cadena usando el operador de conversión a cadena String() -->
-      <a (click)="guardarIdSubasta(subasta.id)" class="btn">Entrar</a>
+      <a [routerLink]="['/subasta', subasta.id]" class="btn">Pujar</a> <!-- Enlace dinámico con ID -->
     </div>
+  </div>
+  <!-- Enlace para volver -->
+  <div class="acciones">
+    <a routerLink="/lista" class="btn btn-secondary">Volver</a>
   </div>
 </div>

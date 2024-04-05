@@ -1,8 +1,7 @@
 import { SubastasService } from '../subastas/subastas.service';
 import { Subastas } from '../subastas/subastas';
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-subastas',
@@ -11,16 +10,24 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class ListaSubastasComponent implements OnInit {
 
-  subastas:Subastas[];
-  constructor(private subastasService:SubastasService){}
+  subastas: Subastas[];
+  idSubastaSeleccionada: string | null = null; // Variable para almacenar el ID seleccionado
+
+  constructor(private subastasService: SubastasService, private router: Router) {}
 
   ngOnInit(): void {
     this.obtenerSubastas();
   }
 
-  private obtenerSubastas(){
+  private obtenerSubastas() {
     this.subastasService.obtenerListaSubastas().subscribe(dato => {
       this.subastas = dato;
     });
   }
+
+  guardarIdSubasta(id: string | number) {
+    this.idSubastaSeleccionada = String(id); // Convierte a cadena usando String()
+    this.router.navigate(['/subasta', this.idSubastaSeleccionada]);
+  }
+
 }
