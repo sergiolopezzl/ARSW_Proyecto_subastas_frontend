@@ -3,8 +3,8 @@
     <div class="estado-container">
       <span class="estado" [ngClass]="{ 'activo': subasta.activa, 'inactivo': !subasta.activa }">{{ subasta.activa ? 'Activa' : 'Inactiva' }}</span>
     </div>
-    <h3 class="nombre-divider">{{ subasta.nombre }}</h3> <!-- División con línea divisoria -->
-    <div class="id-container">{{ subasta.id }}</div> <!-- ID en la esquina inferior derecha -->
+    <h3 class="nombre-divider">{{ subasta.nombre }}</h3>
+    <div class="id-container">{{ subasta.id }}</div>
     <p><strong>Usuario:</strong> {{ subasta.usuario }}</p>
     <p><strong>Cantidad:</strong> {{ subasta.cantidad }}</p>
     <p><strong>Evento:</strong> {{ subasta.evento }}</p>
@@ -16,7 +16,6 @@
       <div class="precio">{{ subasta.precioActual }}</div>
     </div>
     <div class="acciones">
-      <!-- Convierte subasta.id a cadena usando el operador de conversión a cadena String() -->
       <a (click)="guardarIdSubasta(subasta.id)" class="btn">Entrar</a>
     </div>
   </div>

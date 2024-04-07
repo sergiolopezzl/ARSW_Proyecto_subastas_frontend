@@ -1,3 +1,4 @@
+// subasta-detail.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SubastasService } from '../subastas/subastas.service';
@@ -11,7 +12,7 @@ import { Subastas } from '../subastas/subastas'; // Asegúrate de importar el mo
 export class SubastaDetailComponent implements OnInit {
   subastas: Subastas[] = [];
   subastaId: number | null = null;
-  subasta: Subastas | undefined;
+  subasta: Subastas | null = null; // Cambiar el tipo a Subastas | null
 
   constructor(private subastasService: SubastasService, private route: ActivatedRoute) {}
 
@@ -27,6 +28,7 @@ export class SubastaDetailComponent implements OnInit {
     this.subastasService.obtenerListaSubastas().subscribe(
       (datos: Subastas[]) => {
         this.subastas = datos;
+        this.cargarSubasta(); // Mover la función aquí para evitar la búsqueda innecesaria
       },
       error => {
         console.error('Error al obtener las subastas:', error);
@@ -35,8 +37,8 @@ export class SubastaDetailComponent implements OnInit {
   }
 
   cargarSubasta() {
-    if (this.subastaId !== null && this.subastas.length > 0) {
-      this.subasta = this.subastas.find(item => item.id === this.subastaId);
+    if (this.subastaId!== null && this.subastas.length > 0) {
+      this.subasta = this.subastas.find(item => item.id === this.subastaId) || null;
     }
   }
 
@@ -44,5 +46,4 @@ export class SubastaDetailComponent implements OnInit {
    esSubastaCorrecta(subasta: Subastas): boolean {
     return subasta.id === this.subastaId;
   }
-
 }
