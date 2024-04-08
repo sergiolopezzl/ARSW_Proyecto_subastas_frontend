@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="subasta" *ngFor="let subasta of subastas">
+    <div class="estado-container">
+      <span class="estado" [ngClass]="{ 'activo': subasta.activa, 'inactivo': !subasta.activa }">{{ subasta.activa ? 'Activa' : 'Inactiva' }}</span>
+    </div>
+    <h3 class="nombre-divider">{{ subasta.nombre }}</h3>
+    <div class="id-container">{{ subasta.id }}</div>
+    <p><strong>Vendedor:</strong> {{ subasta.usuario }}</p>
+    <p><strong>Cantidad:</strong> {{ subasta.cantidad }}</p>
+    <p><strong>Descripción:</strong> {{ subasta.descripcion }}</p>
+    <div class="acciones">
+      <button (click)="editarSubasta(subasta)" class="btn">Editar</button>
+      <button (click)="eliminarSubasta(subasta.id)" class="btn">Eliminar</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <form #subastaForm="ngForm" (ngSubmit)="guardarSubasta()">
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="subasta.nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" [(ngModel)]="subasta.descripcion" name="descripcion" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="usuario">Vendedor:</label>
+      <input type="text" id="usuario" [(ngModel)]="subasta.usuario" name="usuario" required>
+    </div>
+    <div class="form-group">
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" [(ngModel)]="subasta.cantidad" name="cantidad" required>
+    </div>
+    <div class="form-group">
+      <label for="estado">Estado:</label>
+      <input type="checkbox" id="estado" [(ngModel)]="subasta.activa" name="estado">
+    </div>
+    <div>
+      <button type="submit" [disabled]="!subastaForm.valid">Guardar</button>
+    </div>
+  </form>
+</div>

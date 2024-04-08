@@ -15,7 +15,7 @@
       <div class="precio-label"><strong>Precio Actual:</strong></div>
       <div class="precio">{{ subasta.precioActual }}</div>
     </div>
-    <div class="acciones">
+    <div class="acciones" *ngIf="subasta.activa">
       <a (click)="guardarIdSubasta(subasta.id)" class="btn">Entrar</a>
     </div>
   </div>
