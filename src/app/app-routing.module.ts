@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CrearSubastaComponent } from './crear-subasta/crear-subasta.component';
 import { ListaSubastasComponent } from './lista-subastas/lista-subastas.component';
