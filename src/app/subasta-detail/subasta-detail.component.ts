@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SubastasService } from '../subastas/subastas.service';
 import { Subastas } from '../subastas/subastas'; // Asegúrate de importar el modelo correcto
+import { Usuario } from '../usuario/usuario'; // Importa la clase Usuario
 
 @Component({
   selector: 'app-subasta-detail',
@@ -12,7 +13,8 @@ import { Subastas } from '../subastas/subastas'; // Asegúrate de importar el mo
 export class SubastaDetailComponent implements OnInit {
   subastas: Subastas[] = [];
   subastaId: number | null = null;
-  subasta: Subastas | null = null; // Cambiar el tipo a Subastas | null
+  subasta: Subastas | null = null; // Cambiar el tipo a Subastas | null\
+  usuarios: Usuario[] = [];
 
   constructor(private subastasService: SubastasService, private route: ActivatedRoute) {}
 
@@ -21,6 +23,7 @@ export class SubastaDetailComponent implements OnInit {
       this.subastaId = +params['id']; // Convierte el parámetro de la URL a número
       this.obtenerSubastas();
       this.cargarSubasta();
+      this.obtenerUsuariosPorIdApuesta();
     });
   }
 
@@ -46,4 +49,20 @@ export class SubastaDetailComponent implements OnInit {
    esSubastaCorrecta(subasta: Subastas): boolean {
     return subasta.id === this.subastaId;
   }
+
+  obtenerUsuariosPorIdApuesta() {
+    if (this.subastaId !== null) {
+      this.subastasService.obtenerUsuarios().subscribe(
+        (usuarios: Usuario[]) => {
+          this.usuarios = usuarios.filter(usuarios => usuarios.idDeApuesta === this.subastaId);
+        },
+        error => {
+          console.error('Error al obtener usuarios por ID de apuesta:', error);
+        }
+      );
+    }
+  }
+
+
+
 }

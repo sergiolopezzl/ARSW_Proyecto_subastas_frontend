@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="subasta" *ngFor="let usuario of usuarios">
+    <h3 class="nombre-divider">{{ usuario.nombre }}</h3>
+    <div class="id-container">{{ usuario.id }}</div>
+    <p><strong>Correo Electrónico:</strong> {{ usuario.correoElectronico }}</p>
+    <p><strong>Contraseña:</strong> {{ usuario.contrasena }}</p>
+    <p><strong>Saldo:</strong> {{ usuario.saldo }}</p>
+    <p><strong>ID de Apuesta:</strong> {{ usuario.idDeApuesta }}</p>
+    <p><strong>Gasto:</strong> {{ usuario.gasto }}</p>
+  </div>
+</div>
+

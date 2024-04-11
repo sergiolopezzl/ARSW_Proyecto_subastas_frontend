@@ -19,7 +19,15 @@
       <a [routerLink]="['/subasta', subasta.id]" class="btn">Pujar</a>
     </div>
   </div>
-<usuarios></usuarios>
+  <div class="container">
+  <div class="subasta" *ngFor="let usuario of usuarios">
+    <h3 class="nombre-divider">{{ usuario.nombre }}</h3>
+    <div class="id-container">{{ usuario.id }}</div>
+    <p><strong>ID de Apuesta:</strong> {{ usuario.idDeApuesta }}</p>
+    <p><strong>Puja:</strong> {{ usuario.gasto }}</p>
+  </div>
+</div>
+
 </div>
 <div class="acciones">
   <a routerLink="/lista" class="btn btn-secondary">Volver</a>

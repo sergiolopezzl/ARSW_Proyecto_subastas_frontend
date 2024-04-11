@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subastas } from './subastas';
+import { Usuario } from '../usuario/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class SubastasService {
 
   eliminarSubasta(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseURL}/${id}`);
+  }
+
+  obtenerUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`http://localhost:80/api/usuarios`);
   }
 }

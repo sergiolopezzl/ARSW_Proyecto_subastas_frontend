@@ -1,0 +1,103 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 columnas y ajuste automático */
+  grid-gap: 20px;
+  background-color: #d6d6d650;
+}
+
+.subasta {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative; /* Para posicionar el estado en la esquina superior derecha */
+}
+
+.estado-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.estado {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.activo {
+  font-size: 10px;
+  background-color: #4CAF50; /* Verde */
+}
+
+.inactivo {
+  font-size: 10px;
+  background-color: #f44336; /* Rojo */
+}
+
+.precio-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.precio-label {
+  font-size: 14px;
+  color: #727272;
+  margin-bottom: 5px;
+}
+
+.precio {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #fcea4f;
+  color: #000000;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.acciones {
+  margin-top: 20px;
+  text-align: center; /* Centra el botón */
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 30px; /* Aumenta el padding para hacer el botón más grande */
+  background-color: #ff7b00d3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px; /* Mayor radio para hacerlo más redondeado */
+  transition: background-color 0.3s ease;
+  border: none; /* Elimina el borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #ff7b008a;
+}
+
+/* Estilos para la línea divisoria */
+.nombre-divider {
+  border-bottom: 2px solid #ccc; /* Borde inferior */
+  margin-bottom: 10px; /* Espacio debajo de la línea */
+}
+
+.id-container {
+  position: absolute;
+  bottom: 8px;
+  right: 9px;
+  font-size: 18px;
+  font-weight: bold;
+
+}
