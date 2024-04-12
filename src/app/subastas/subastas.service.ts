@@ -9,7 +9,7 @@ import { Usuario } from '../usuario/usuario';
 })
 export class SubastasService {
 
-  private baseURL = "http://localhost:80/api/subastas";
+  private baseURL = "http://localhost:3000/api/subastas";
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +30,6 @@ export class SubastasService {
   }
 
   obtenerUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`http://localhost:80/api/usuarios`);
+    return this.http.get<Usuario[]>(`http://localhost:3000/api/usuarios`);
   }
 }
