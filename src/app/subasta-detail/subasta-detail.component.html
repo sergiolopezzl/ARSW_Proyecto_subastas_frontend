@@ -16,8 +16,9 @@
       <div class="precio">{{ subasta.precioActual }}</div>
     </div>
     <div class="acciones">
-      <a [routerLink]="['/subasta', subasta.id]" class="btn">Pujar</a>
+      <a (click)="mostrarDetalleSubasta = true" class="btn">Pujar</a>
     </div>
+
   </div>
   <div class="container">
   <div class="subasta" *ngFor="let usuario of usuarios">
@@ -30,5 +31,10 @@
 
 </div>
 <div class="acciones">
+
   <a routerLink="/lista" class="btn btn-secondary">Volver</a>
+</div>
+<div *ngIf="mostrarDetalleSubasta">
+  <!-- Mostrar el componente <app-subasta-detail> solo cuando mostrarDetalleSubasta sea true -->
+  <lista-usuarios ></lista-usuarios>
 </div>

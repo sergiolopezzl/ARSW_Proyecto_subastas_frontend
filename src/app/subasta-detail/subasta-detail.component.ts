@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SubastasService } from '../subastas/subastas.service';
 import { Subastas } from '../subastas/subastas'; // Asegúrate de importar el modelo correcto
 import { Usuario } from '../usuario/usuario'; // Importa la clase Usuario
+import { SocketService } from '../socket.service';
 
 @Component({
   selector: 'app-subasta-detail',
@@ -15,12 +16,13 @@ export class SubastaDetailComponent implements OnInit {
   subastaId: number | null = null;
   subasta: Subastas | null = null; // Cambiar el tipo a Subastas | null\
   usuarios: Usuario[] = [];
-
-  constructor(private subastasService: SubastasService, private route: ActivatedRoute) {}
+  mostrarDetalleSubasta = false;
+  constructor(private subastasService: SubastasService, private route: ActivatedRoute, private socketService: SocketService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.subastaId = +params['id']; // Convierte el parámetro de la URL a número
+      subasta: this.obtenerSubastas(); // Aquí iría tu objeto de subasta
       this.obtenerSubastas();
       this.cargarSubasta();
       this.obtenerUsuariosPorIdApuesta();
@@ -62,6 +64,11 @@ export class SubastaDetailComponent implements OnInit {
       );
     }
   }
+  pujar() {
+    // Lógica para pujar en la subasta
+
+  }
+
 
 
 

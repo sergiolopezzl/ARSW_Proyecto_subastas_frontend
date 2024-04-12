@@ -1,12 +1,31 @@
 <div class="container">
-  <div class="subasta" *ngFor="let usuario of usuarios">
-    <h3 class="nombre-divider">{{ usuario.nombre }}</h3>
-    <div class="id-container">{{ usuario.id }}</div>
-    <p><strong>Correo Electrónico:</strong> {{ usuario.correoElectronico }}</p>
-    <p><strong>Contraseña:</strong> {{ usuario.contrasena }}</p>
-    <p><strong>Saldo:</strong> {{ usuario.saldo }}</p>
-    <p><strong>ID de Apuesta:</strong> {{ usuario.idDeApuesta }}</p>
-    <p><strong>Gasto:</strong> {{ usuario.gasto }}</p>
-  </div>
+  <form #usuarioForm="ngForm" (ngSubmit)="guardarUsuario()">
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+      <label for="correoElectronico">Correo Electrónico:</label>
+      <input type="email" id="correoElectronico" [(ngModel)]="usuario.correoElectronico" name="correoElectronico" required>
+    </div>
+    <div class="form-group">
+      <label for="contraseña">Contraseña:</label>
+      <input type="password" id="contraseña" [(ngModel)]="usuario.contrasena" name="contraseña" required>
+    </div>
+    <div class="form-group">
+      <label for="saldo">Saldo:</label>
+      <input type="number" id="saldo" [(ngModel)]="usuario.saldo" name="saldo" required>
+    </div>
+    <div class="form-group">
+      <label for="idDeApuesta">ID de Apuesta:</label>
+      <input type="number" id="idDeApuesta" [(ngModel)]="usuario.idDeApuesta" name="idDeApuesta" required>
+    </div>
+    <div class="form-group">
+      <label for="gasto">Gasto:</label>
+      <input type="number" id="gasto" [(ngModel)]="usuario.gasto" name="gasto" required>
+    </div>
+    <div>
+      <button type="submit" [disabled]="!usuarioForm.valid">Guardar</button>
+    </div>
+  </form>
 </div>
-
