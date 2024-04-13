@@ -57,7 +57,8 @@ export class ListaUsuariosComponent implements OnInit {
         // Emitir el usuario creado al observable del SocketService
         this.socketService.getUserSubject().next(response); // Asegúrate de tener este método en tu servicio
         // Emitir la lista actualizada de usuarios al WebSocket
-        this.actualizarUsuariosEnWebSocket();
+
+        this.actualizarUsuariosEnWebSocket(response);
       },
       error => {
         console.error('Error al crear usuario:', error);
@@ -65,12 +66,11 @@ export class ListaUsuariosComponent implements OnInit {
     );
   }
 
-  actualizarUsuariosEnWebSocket() {
-    const usuarioNuevo = this.usuarios[this.usuarios.length - 1]; // Suponiendo que el nuevo usuario está al final de la lista
-
-  // Enviar el usuario al WebSocket
-    this.socketService.getUserSubject().next(usuarioNuevo);
+  actualizarUsuariosEnWebSocket(usuario: Usuario) {
+    // Enviar el usuario recién creado al WebSocket
+    this.socketService.getUserSubject().next(usuario);
   }
+
 
   actualizarUsuario(id: number, usuario: Usuario) {
     this.usuarioService.actualizarUsuario(id, usuario).subscribe(

@@ -39,6 +39,9 @@ export class SubastaDetailComponent implements OnInit {
       });
     });
 
+    //setInterval(() => {
+    //  location.reload();
+    //}, 10000); // Recargar la página cada 30 segundos (30000 milisegundos)
   }
 
 
