@@ -11,9 +11,9 @@ import { SubastaDetailComponent } from './subasta-detail/subasta-detail.componen
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CrudSubastasComponent } from './crud-subastas/crud-subastas.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SocketIoModule} from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule
   ],
   providers: [
     //provideClientHydration()

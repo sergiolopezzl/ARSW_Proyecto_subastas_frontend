@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Usuario } from './usuario/usuario';
 
 @Injectable({
@@ -10,6 +10,7 @@ import { Usuario } from './usuario/usuario';
 export class SocketService {
   private stompClient: any
   private messageSubject: BehaviorSubject<Usuario[]> = new BehaviorSubject<Usuario[]>([]);
+  private userSubject: Subject<Usuario> = new Subject<Usuario>(); // Nuevo Subject
 
   constructor() {
     this.initConnenctionSocket();
@@ -18,19 +19,20 @@ export class SocketService {
   initConnenctionSocket() {
     const url = '//localhost:3000/chat-socket';
     const socket = new SockJS(url);
-    this.stompClient = Stomp.over(socket)
-    const stompClient = Stomp.over(() => new SockJS(url));
+    this.stompClient = Stomp.over(() => socket);
   }
 
   joinRoom(roomId: string) {
-    this.stompClient.connect({}, ()=>{
+    this.stompClient.connect({}, () => {
       this.stompClient.subscribe(`/topic/${roomId}`, (messages: any) => {
         const messageContent = JSON.parse(messages.body);
         const currentMessage = this.messageSubject.getValue();
         currentMessage.push(messageContent);
-
         this.messageSubject.next(currentMessage);
 
+        // Imprimir el mensaje JSON de forma legible en la consola
+        console.log('Mensaje WebSocket recibido:');
+        console.log(JSON.stringify(messageContent, null, 2)); // Indentación de 2 espacios
       })
     })
   }
@@ -41,6 +43,9 @@ export class SocketService {
 
   getMessageSubject(){
     return this.messageSubject.asObservable();
+  }
+  getUserSubject() {
+    return this.userSubject;
   }
 
 }

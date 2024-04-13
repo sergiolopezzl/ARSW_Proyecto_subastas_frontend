@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../usuario/usuario'; // Importa la clase Usuario
 import { UsuariosService } from '../usuario/usuario.service'; // Importa el servicio UsuarioService
-
+import { SocketService } from '../socket.service';
 @Component({
   selector: 'lista-usuarios',
   templateUrl: './lista-usuarios.component.html',
@@ -12,10 +12,12 @@ export class ListaUsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuario: Usuario = new Usuario();
 
-  constructor(private usuarioService: UsuariosService) { }
+  constructor(private usuarioService: UsuariosService, private socketService: SocketService
+  ) { }
 
   ngOnInit(): void {
     this.obtenerUsuarios();
+    this.connectToSocket();
   }
 
   obtenerUsuarios() {
@@ -43,6 +45,12 @@ export class ListaUsuariosComponent implements OnInit {
         console.log('Usuario creado:', response);
         this.obtenerUsuarios(); // Actualiza la lista después de guardar
         this.limpiarFormulario();
+
+        // Enviar mensaje WebSocket después de crear usuario
+        this.socketService.sendMessage("Sala1", response);
+
+        // Emitir el usuario creado al observable del SocketService
+        this.socketService.getUserSubject().next(response); // Asegúrate de tener este método en tu servicio
       },
       error => {
         console.error('Error al crear usuario:', error);
@@ -83,5 +91,18 @@ export class ListaUsuariosComponent implements OnInit {
 
   limpiarFormulario() {
     this.usuario = new Usuario(); // Reinicia el objeto usuario para crear uno nuevo
+  }
+
+  connectToSocket() {
+    const roomId = 'sala1'; // Puedes ajustar el ID de la sala según tu lógica
+    this.socketService.joinRoom(roomId);
+
+    this.socketService.getMessageSubject().subscribe((messages: Usuario[]) => {
+      console.log('Mensajes del socket:', messages);
+      // Puedes agregar lógica adicional aquí según los mensajes recibidos
+      if (messages.length > 0) {
+        this.obtenerUsuarios(); // Actualiza la lista si se recibe un mensaje del socket
+      }
+    });
   }
 }

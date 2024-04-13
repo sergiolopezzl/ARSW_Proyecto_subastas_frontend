@@ -23,13 +23,21 @@ export class SubastaDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.subastaId = +params['id']; // Convierte el parámetro de la URL a número
-      subasta: this.obtenerSubastas(); // Aquí iría tu objeto de subasta
       this.obtenerSubastas();
       this.cargarSubasta();
       this.obtenerUsuariosPorIdApuesta();
       this.socketService.joinRoom("Sala1");
+
+      // Suscribirse a mensajes WebSocket
+      this.socketService.getUserSubject().subscribe((usuario: Usuario) => {
+        // Actualizar la lista de usuarios si se recibe un mensaje del WebSocket
+        if (usuario) {
+          this.obtenerUsuariosPorIdApuesta();
+        }
+      });
     });
   }
+
 
   obtenerSubastas() {
     this.subastasService.obtenerListaSubastas().subscribe(
