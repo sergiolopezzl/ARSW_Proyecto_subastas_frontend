@@ -31,11 +31,14 @@ export class SubastaDetailComponent implements OnInit {
       // Suscribirse a mensajes WebSocket
       this.socketService.getUserSubject().subscribe((usuario: Usuario) => {
         // Actualizar la lista de usuarios si se recibe un mensaje del WebSocket
+        //this.usuario = usuario;
         if (usuario) {
           this.obtenerUsuariosPorIdApuesta();
         }
+
       });
     });
+
   }
 
 
@@ -66,7 +69,7 @@ export class SubastaDetailComponent implements OnInit {
     if (this.subastaId !== null) {
       this.subastasService.obtenerUsuarios().subscribe(
         (usuarios: Usuario[]) => {
-          this.usuarios = usuarios.filter(usuarios => usuarios.idDeApuesta === this.subastaId);
+          this.usuarios = usuarios.filter(usuario => usuario.idDeApuesta === this.subastaId);
         },
         error => {
           console.error('Error al obtener usuarios por ID de apuesta:', error);
@@ -74,6 +77,7 @@ export class SubastaDetailComponent implements OnInit {
       );
     }
   }
+
   pujar() {
     // Lógica para pujar en la subasta
 

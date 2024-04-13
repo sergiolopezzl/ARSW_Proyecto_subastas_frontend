@@ -11,6 +11,7 @@ export class SocketService {
   private stompClient: any
   private messageSubject: BehaviorSubject<Usuario[]> = new BehaviorSubject<Usuario[]>([]);
   private userSubject: Subject<Usuario> = new Subject<Usuario>(); // Nuevo Subject
+  private usuariosSubject: BehaviorSubject<Usuario[]> = new BehaviorSubject<Usuario[]>([]);
 
   constructor() {
     this.initConnenctionSocket();
@@ -33,6 +34,12 @@ export class SocketService {
         // Imprimir el mensaje JSON de forma legible en la consola
         console.log('Mensaje WebSocket recibido:');
         console.log(JSON.stringify(messageContent, null, 2)); // Indentación de 2 espacios
+
+        if (messageContent.usuarios) {
+          const currentUsuarios = this.usuariosSubject.getValue();
+          currentUsuarios.push(...messageContent.usuarios);
+          this.usuariosSubject.next(currentUsuarios);
+        }
       })
     })
   }
@@ -47,5 +54,7 @@ export class SocketService {
   getUserSubject() {
     return this.userSubject;
   }
-
+  getUsuariosSubject() {
+    return this.usuariosSubject.asObservable();
+  }
 }

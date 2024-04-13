@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../usuario/usuario'; // Importa la clase Usuario
 import { UsuariosService } from '../usuario/usuario.service'; // Importa el servicio UsuarioService
+import { SubastasService } from '../subastas/subastas.service';
 import { SocketService } from '../socket.service';
 @Component({
   selector: 'lista-usuarios',
@@ -12,12 +13,16 @@ export class ListaUsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuario: Usuario = new Usuario();
 
-  constructor(private usuarioService: UsuariosService, private socketService: SocketService
-  ) { }
+
+  constructor(private usuarioService: UsuariosService, private socketService: SocketService, private subastasService: SubastasService ) { }
 
   ngOnInit(): void {
     this.obtenerUsuarios();
     this.connectToSocket();
+    this.socketService.getUserSubject().subscribe((usuario: Usuario) => { // Cambio aquí
+      // Actualizar la lista de usuarios en tiempo real
+      this.usuarios.push(usuario); // Agregar el nuevo usuario a la lista
+    });
   }
 
   obtenerUsuarios() {
@@ -51,11 +56,20 @@ export class ListaUsuariosComponent implements OnInit {
 
         // Emitir el usuario creado al observable del SocketService
         this.socketService.getUserSubject().next(response); // Asegúrate de tener este método en tu servicio
+        // Emitir la lista actualizada de usuarios al WebSocket
+        this.actualizarUsuariosEnWebSocket();
       },
       error => {
         console.error('Error al crear usuario:', error);
       }
     );
+  }
+
+  actualizarUsuariosEnWebSocket() {
+    const usuarioNuevo = this.usuarios[this.usuarios.length - 1]; // Suponiendo que el nuevo usuario está al final de la lista
+
+  // Enviar el usuario al WebSocket
+    this.socketService.getUserSubject().next(usuarioNuevo);
   }
 
   actualizarUsuario(id: number, usuario: Usuario) {
