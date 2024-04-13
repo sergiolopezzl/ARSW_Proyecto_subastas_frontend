@@ -17,6 +17,7 @@ export class SubastaDetailComponent implements OnInit {
   subasta: Subastas | null = null; // Cambiar el tipo a Subastas | null\
   usuarios: Usuario[] = [];
   mostrarDetalleSubasta = false;
+
   constructor(private subastasService: SubastasService, private route: ActivatedRoute, private socketService: SocketService) {}
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class SubastaDetailComponent implements OnInit {
       this.obtenerSubastas();
       this.cargarSubasta();
       this.obtenerUsuariosPorIdApuesta();
+      this.socketService.joinRoom("Sala1");
     });
   }
 
