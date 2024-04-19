@@ -15,26 +15,32 @@
       <div class="precio-label"><strong>Precio Actual:</strong></div>
       <div class="precio">{{ subasta.precioActual }}</div>
     </div>
-    <div class="acciones">
-      <a (click)="mostrarDetalleSubasta = true" class="btn">Pujar</a>
-    </div>
+    <form #usuarioForm="ngForm" (ngSubmit)="guardarUsuario()">
+      <!-- Agrega un campo de entrada para que el usuario ingrese el valor de la puja -->
+      <div class="puja-container">
+        <label for="gasto">Valor de la Puja:</label>
+        <div class="input-group">
+          <input type="number" id="gasto" [(ngModel)]="usuario.gasto" name="gasto" placeholder="Ingrese su puja" min="0" step="100" class="form-control">
+          <div class="input-group-append">
+            <button type="submit" [disabled]="!usuarioForm.valid" class="btn btn-primary">Pujar y Guardar</button>
+          </div>
+        </div>
+      </div>
+    </form>
 
   </div>
   <div class="container">
-  <div class="subasta" *ngFor="let usuario of usuarios">
-    <h3 class="nombre-divider">{{ usuario.nombre }}</h3>
-    <div class="id-container">{{ usuario.id }}</div>
-    <p><strong>ID de Apuesta:</strong> {{ usuario.idDeApuesta }}</p>
-    <p><strong>Puja:</strong> {{ usuario.gasto }}</p>
+    <div class="subasta" *ngFor="let usuario of usuarios">
+      <h3 class="nombre-divider">{{ usuario.nombre }}</h3>
+      <div class="id-container">{{ usuario.id }}</div>
+      <p><strong>ID de Apuesta:</strong> {{ usuario.idDeApuesta }}</p>
+      <p><strong>Puja:</strong> {{ usuario.gasto }}</p>
+    </div>
   </div>
-</div>
 
 </div>
 <div class="acciones">
 
   <a routerLink="/lista" class="btn btn-secondary">Volver</a>
 </div>
-<div *ngIf="mostrarDetalleSubasta">
-  <!-- Mostrar el componente <app-subasta-detail> solo cuando mostrarDetalleSubasta sea true -->
-  <lista-usuarios ></lista-usuarios>
-</div>
+

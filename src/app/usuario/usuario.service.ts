@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { Usuario } from './usuario'; // Importa la clase Usuario
 
 @Injectable({
@@ -26,5 +26,14 @@ export class UsuariosService {
 
   eliminarUsuario(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseURL}/${id}`);
+  }
+
+  obtenerUltimoIdUsuario(): Observable<number> {
+    return this.http.get<number>(`${this.baseURL}/last-id`);
+  }
+  actualizarUltimoUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.get<number>(`${this.baseURL}/last-id`).pipe(
+      switchMap((ultimoId: number) => this.http.put<Usuario>(`${this.baseURL}/${ultimoId}`, usuario))
+    );
   }
 }

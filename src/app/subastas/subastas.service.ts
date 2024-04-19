@@ -32,4 +32,8 @@ export class SubastasService {
   obtenerUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`http://localhost:3000/api/usuarios`);
   }
+
+  realizarPuja(id: number, subasta: Subastas): Observable<Subastas> {
+    return this.http.put<Subastas>(`${this.baseURL}/${id}`, subasta);
+  }
 }

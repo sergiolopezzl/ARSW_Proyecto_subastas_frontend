@@ -1,4 +1,6 @@
+import { UsuariosService } from './../usuario/usuario.service';
 // subasta-detail.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SubastasService } from '../subastas/subastas.service';
@@ -14,11 +16,13 @@ import { SocketService } from '../socket.service';
 export class SubastaDetailComponent implements OnInit {
   subastas: Subastas[] = [];
   subastaId: number | null = null;
-  subasta: Subastas | null = null; // Cambiar el tipo a Subastas | null\
+  subasta: Subastas | null = null;
   usuarios: Usuario[] = [];
   mostrarDetalleSubasta = false;
+  valorPuja: number = 0; // Propiedad para almacenar el valor de la puja
 
-  constructor(private subastasService: SubastasService, private route: ActivatedRoute, private socketService: SocketService) {}
+  usuario: Usuario = new Usuario();
+  constructor(private subastasService: SubastasService, private route: ActivatedRoute, private socketService: SocketService, private UsuariosService: UsuariosService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -38,12 +42,7 @@ export class SubastaDetailComponent implements OnInit {
 
       });
     });
-
-    //setInterval(() => {
-    //  location.reload();
-    //}, 10000); // Recargar la página cada 30 segundos (30000 milisegundos)
   }
-
 
   obtenerSubastas() {
     this.subastasService.obtenerListaSubastas().subscribe(
@@ -63,8 +62,7 @@ export class SubastaDetailComponent implements OnInit {
     }
   }
 
-   // Función para verificar si la subasta actual es la que estamos buscando
-   esSubastaCorrecta(subasta: Subastas): boolean {
+  esSubastaCorrecta(subasta: Subastas): boolean {
     return subasta.id === this.subastaId;
   }
 
@@ -81,12 +79,89 @@ export class SubastaDetailComponent implements OnInit {
     }
   }
 
-  pujar() {
-    // Lógica para pujar en la subasta
-
+  obtenerUsuarios() {
+    this.UsuariosService.obtenerListaUsuarios().subscribe(
+      (data: Usuario[]) => {
+        this.usuarios = data;
+      },
+      error => {
+        console.error('Error al obtener usuarios:', error);
+      }
+    );
   }
 
+  guardarUsuario() {
+    if (this.usuario.id) {
+      this.UsuariosService.actualizarUltimoUsuario(this.usuario).subscribe(
+        response => {
+          console.log('Usuario actualizado:', response);
+          this.obtenerUsuarios(); // Actualiza la lista después de guardar
+          this.limpiarFormulario();
+        },
+        error => {
+          console.error('Error al actualizar usuario:', error);
+        }
+      );
+    } else {
+      this.UsuariosService.crearUsuario(this.usuario).subscribe(
+        response => {
+          console.log('Usuario creado:', response);
+          this.obtenerUsuarios(); // Actualiza la lista después de guardar
+          this.limpiarFormulario();
+        },
+        error => {
+          console.error('Error al crear usuario:', error);
+        }
+      );
+    }
+  }
 
+  crearUsuario(usuario: Usuario) {
+    this.UsuariosService.crearUsuario(usuario).subscribe(
+      response => {
+        console.log('Usuario creado:', response);
+        this.obtenerUsuarios(); // Actualiza la lista después de guardar
+        this.limpiarFormulario();
+      },
+      error => {
+        console.error('Error al crear usuario:', error);
+      }
+    );
+  }
 
+  actualizarUsuario(id: number, usuario: Usuario) {
+    this.UsuariosService.actualizarUsuario(id, usuario).subscribe(
+      response => {
+        console.log('Usuario actualizado:', response);
+        this.obtenerUsuarios(); // Actualiza la lista después de guardar
+        this.limpiarFormulario();
+      },
+      error => {
+        console.error('Error al actualizar usuario:', error);
+      }
+    );
+  }
+
+  editarUsuario(usuario: Usuario) {
+    this.usuario = { ...usuario }; // Copia el usuario para editar en el formulario
+  }
+
+  eliminarUsuario(id: number) {
+    if (confirm('¿Está seguro de eliminar este usuario?')) {
+      this.UsuariosService.eliminarUsuario(id).subscribe(
+        response => {
+          console.log('Usuario eliminado:', response);
+          this.obtenerUsuarios(); // Actualiza la lista después de eliminar
+        },
+        error => {
+          console.error('Error al eliminar usuario:', error);
+        }
+      );
+    }
+  }
+
+  limpiarFormulario() {
+    this.usuario = new Usuario(); // Reinicia el objeto usuario para crear uno nuevo
+  }
 
 }

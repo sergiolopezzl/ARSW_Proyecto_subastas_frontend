@@ -1,31 +1,13 @@
 <div class="container">
   <form #usuarioForm="ngForm" (ngSubmit)="guardarUsuario()">
-    <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required>
-    </div>
-    <div class="form-group">
-      <label for="correoElectronico">Correo Electrónico:</label>
-      <input type="email" id="correoElectronico" [(ngModel)]="usuario.correoElectronico" name="correoElectronico" required>
-    </div>
-    <div class="form-group">
-      <label for="contraseña">Contraseña:</label>
-      <input type="password" id="contraseña" [(ngModel)]="usuario.contrasena" name="contraseña" required>
-    </div>
-    <div class="form-group">
-      <label for="saldo">Saldo:</label>
-      <input type="number" id="saldo" [(ngModel)]="usuario.saldo" name="saldo" required>
-    </div>
-    <div class="form-group">
       <label for="idDeApuesta">ID de Apuesta:</label>
       <input type="number" id="idDeApuesta" [(ngModel)]="usuario.idDeApuesta" name="idDeApuesta" required>
-    </div>
     <div class="form-group">
       <label for="gasto">Gasto:</label>
       <input type="number" id="gasto" [(ngModel)]="usuario.gasto" name="gasto" required>
     </div>
     <div>
-      <button type="submit" [disabled]="!usuarioForm.valid">Guardar</button>
+      <button type="submit" [disabled]="!usuarioForm.valid">Puja</button>
     </div>
   </form>
 </div>
