@@ -8,7 +8,7 @@ import { Usuario } from './usuario'; // Importa la clase Usuario
 })
 export class UsuariosService {
 
-  private baseURL = "http://localhost:3000/api/usuarios"; // URL base para los usuarios
+  private baseURL = "http://localhost:80/api/usuarios"; // URL base para los usuarios
 
   constructor(private http: HttpClient) { }
 

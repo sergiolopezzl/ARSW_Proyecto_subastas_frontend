@@ -12,6 +12,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CrudSubastasComponent } from './crud-subastas/crud-subastas.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { SocketIoModule} from 'ngx-socket-io';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -24,7 +25,8 @@ import { SocketIoModule} from 'ngx-socket-io';
     SubastaDetailComponent,
     UsuariosComponent,
     CrudSubastasComponent,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

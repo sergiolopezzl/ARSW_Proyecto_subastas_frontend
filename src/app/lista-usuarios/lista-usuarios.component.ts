@@ -4,6 +4,7 @@ import { Usuario } from '../usuario/usuario'; // Importa la clase Usuario
 import { UsuariosService } from '../usuario/usuario.service'; // Importa el servicio UsuarioService
 import { SubastasService } from '../subastas/subastas.service';
 import { SocketService } from '../socket.service';
+
 @Component({
   selector: 'lista-usuarios',
   templateUrl: './lista-usuarios.component.html',

@@ -1,6 +1,6 @@
 import { UsuariosService } from './../usuario/usuario.service';
 // subasta-detail.component.ts
-
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SubastasService } from '../subastas/subastas.service';
@@ -14,15 +14,17 @@ import { SocketService } from '../socket.service';
   styleUrls: ['./subasta-detail.component.css']
 })
 export class SubastaDetailComponent implements OnInit {
+  subasta: any; // Asegúrate de definir la estructura de tu objeto subasta
+  usuario: any = { gasto: 0 };
+  usuarios: any[] = []; // Array para almacenar los usuarios
+
   subastas: Subastas[] = [];
   subastaId: number | null = null;
-  subasta: Subastas | null = null;
-  usuarios: Usuario[] = [];
+
   mostrarDetalleSubasta = false;
   valorPuja: number = 0; // Propiedad para almacenar el valor de la puja
 
-  usuario: Usuario = new Usuario();
-  constructor(private subastasService: SubastasService, private route: ActivatedRoute, private socketService: SocketService, private UsuariosService: UsuariosService) {}
+  constructor(private subastasService: SubastasService, private route: ActivatedRoute, private socketService: SocketService, private UsuariosService: UsuariosService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -91,28 +93,26 @@ export class SubastaDetailComponent implements OnInit {
   }
 
   guardarUsuario() {
-    if (this.usuario.id) {
-      this.UsuariosService.actualizarUltimoUsuario(this.usuario).subscribe(
-        response => {
-          console.log('Usuario actualizado:', response);
-          this.obtenerUsuarios(); // Actualiza la lista después de guardar
-          this.limpiarFormulario();
-        },
-        error => {
-          console.error('Error al actualizar usuario:', error);
-        }
-      );
-    } else {
-      this.UsuariosService.crearUsuario(this.usuario).subscribe(
-        response => {
-          console.log('Usuario creado:', response);
-          this.obtenerUsuarios(); // Actualiza la lista después de guardar
-          this.limpiarFormulario();
-        },
-        error => {
-          console.error('Error al crear usuario:', error);
-        }
-      );
+    if (this.usuario.gasto > 0) {
+      // Envía la señal a la URL especificada
+      const url = 'http://localhost:4200/chat/1';
+      this.http.post(url, { gasto: this.usuario.gasto }).subscribe(response => {
+        console.log('Respuesta del servidor:', response);
+        // Lógica adicional después de enviar la solicitud, si es necesario
+
+        // Por ejemplo, agregar el usuario a la lista de usuarios
+        this.usuarios.push({
+          nombre: 'Nombre del usuario', // Puedes reemplazar esto con el nombre real del usuario
+          id: this.usuarios.length + 1,
+          idDeApuesta: 'ID de la apuesta', // Reemplazar con el ID real de la apuesta si está disponible
+          gasto: this.usuario.gasto
+        });
+
+        // Resetea el campo de puja
+        this.usuario.gasto = 0;
+      }, error => {
+        console.error('Error al enviar la solicitud:', error);
+      });
     }
   }
 

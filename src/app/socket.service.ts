@@ -22,7 +22,7 @@ export class SocketService {
   }
 
   initConnenctionSocket() {
-    const url = '//localhost:3000/chat-socket';
+    const url = '//localhost:80/chat-socket';
     const socket = new SockJS(url);
     this.stompClient = Stomp.over(() => socket);
   }

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="subasta_window">
+    <div class="top_menu">
+      <div class="buttons"></div>
+      <div class="title">
+        Subasta
+      </div>
+    </div>
+    <ul class="messages">
+      <li class="message" *ngFor="let item of messageList" [ngClass]="{'left': item.message_side === 'receiver', 'right': item.message_side === 'sender'}">
+        <div class="avatar"></div>
+        <div class="text_wrapper">
+          <div class="text">{{item.message}}</div>
+        </div>
+      </li>
+    </ul>
+    <div class="bottom_wrapper clearfix">
+      <div class="message_input_wrapper">
+        <input class="message_input" placeholder="Valor de la puja..." [(ngModel)]="messageInput" (keyup.enter)="sendMessage()"/>
+      </div>
+      <div class="send_message" (click)="sendMessage()">
+        <div class="icon"></div>
+        <div class="text">Pujar</div>
+      </div>
+    </div>
+  </div>
+</div>

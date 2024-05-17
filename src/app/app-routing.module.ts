@@ -6,6 +6,7 @@ import { ListaSubastasComponent } from './lista-subastas/lista-subastas.componen
 import { SubastaDetailComponent } from './subasta-detail/subasta-detail.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CrudSubastasComponent } from './crud-subastas/crud-subastas.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   // Otras rutas existentes...
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'lista', component: ListaSubastasComponent },
   { path: 'subasta/:id', component: SubastaDetailComponent },
   { path: 'usuarios', component: UsuariosComponent },
+  { path: 'chat/:userId', component: ChatComponent}
+
 ];
 
 @NgModule({

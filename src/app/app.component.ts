@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   constructor(private router: Router) {}
-
+  title = 'ng-chat-socket';
   ngOnInit(): void {
     //this.router.navigate(['/lista']);
   }
