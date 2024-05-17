@@ -16,7 +16,7 @@
     </ul>
     <div class="bottom_wrapper clearfix">
       <div class="message_input_wrapper">
-        <input class="message_input" placeholder="Valor de la puja..." [(ngModel)]="messageInput" (keyup.enter)="sendMessage()"/>
+        <input class="message_input" placeholder="Valor de la puja..." [(ngModel)]="messageInput" (keypress)="onlyNumberKey($event)" />
       </div>
       <div class="send_message" (click)="sendMessage()">
         <div class="icon"></div>

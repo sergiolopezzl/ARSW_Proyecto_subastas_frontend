@@ -35,6 +35,12 @@ export class ChatComponent implements OnInit {
     this.chatService.sendMessage("ABC", chatMessage);
     this.messageInput = '';
   }
+  onlyNumberKey(event: any) {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+    }
+  }
 
   lisenerMessage() {
     this.chatService.getMessageSubject().subscribe((messages: any) => {
