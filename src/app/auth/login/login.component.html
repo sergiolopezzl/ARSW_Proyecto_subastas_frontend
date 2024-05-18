@@ -3,21 +3,21 @@
     <img src="../../../assets/img.jpg" alt="Login Image">
   </div>
   <div class="form-container">
-    <h2>Login</h2>
+    <h2>Iniciar Sesion</h2>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username">Usuario</label>
         <input type="text" id="username" name="username" [(ngModel)]="loginData.username" required>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Contrasena</label>
         <input type="password" id="password" name="password" [(ngModel)]="loginData.password" required>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Inicia Sesion</button>
     </form>
     <p *ngIf="responseMessage" [ngClass]="{'response-message': isSuccess, 'error-message': !isSuccess}">
       {{ responseMessage }}
     </p>
-    <p>Don't have an account? <a routerLink="/register">Register</a></p>
+    <p>No tienes cuenta? <a routerLink="/register">Registrate</a></p>
   </div>
 </div>

@@ -16,12 +16,12 @@ export class RegisterComponent {
 
   onSubmit() {
     this.apiService.registerUser(this.registerData).subscribe(response => {
-      console.log('Registration successful', response);
+      console.log('Registro Exitoso', response);
       this.responseMessage = response.responseMessage;
       this.isSuccess = response.success;
     }, error => {
-      console.error('Registration failed', error);
-      this.responseMessage = 'Registration failed. Please try again.';
+      console.error('Registro Fallido', error);
+      this.responseMessage = 'Registro fallido. Intenta de nuevo.';
       this.isSuccess = false;
     });
   }

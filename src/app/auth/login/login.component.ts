@@ -16,7 +16,7 @@ export class LoginComponent {
 
   onSubmit() {
     this.apiService.loginUser(this.loginData).subscribe(response => {
-      console.log('Login successful', response);
+      console.log('Inicio Exitoso', response);
       this.responseMessage = response.responseMessage;
       this.isSuccess = response.success;
       if (response.success) {
@@ -24,8 +24,8 @@ export class LoginComponent {
         this.router.navigate(['/available-products']);
       }
     }, error => {
-      console.error('Login failed', error);
-      this.responseMessage = 'Login failed. Please try again.';
+      console.error('Inicio Fallido', error);
+      this.responseMessage = 'Inicio de Sesion fallido. Intenta de nuevo';
       this.isSuccess = false;
     });
   }
