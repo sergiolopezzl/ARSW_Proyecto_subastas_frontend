@@ -1,87 +1,122 @@
 .product-detail-card {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    flex-direction: column;
-  }
-  
-  .card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  .card-header {
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
-  }
-  .response-message {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #0b5c5f;
-  }
-  .card-header h2 {
-    margin: 0;
-  }
-  
-  .card-body p {
-    margin: 10px 0;
-  }
-  
-  .card-body h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  .bid-form {
-    margin-top: 20px;
-  }
-  
-  .bid-form .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .bid-form label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .bid-form input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-  }
-  
-  .bid-form button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .bid-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .offers-list {
-    margin-top: 20px;
-  }
-  
-  .offer-card {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-  }
-  
-  .offer-card p {
-    margin: 5px 0;
-  }
-  
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  background-color: #fff;
+}
+
+.card-header {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 2em;
+}
+
+.card-body p {
+  margin: 10px 0;
+  color: #666;
+  font-size: 1em;
+}
+
+.card-body h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.bid-form {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.bid-form h3 {
+  color: #333;
+  text-align: center;
+}
+
+.bid-form .form-group {
+  margin-bottom: 15px;
+}
+
+.bid-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.bid-form input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.bid-form button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #1eff00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.bid-form button:hover {
+  background-color: #cfffc9;
+}
+
+.response-message {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #0b5c5f;
+  color: white;
+}
+
+.offers-list {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.offers-list h3 {
+  color: #ff7b00;
+  text-align: center;
+}
+
+.offer-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.offer-card p {
+  margin: 5px 0;
+  color: #666;
+}

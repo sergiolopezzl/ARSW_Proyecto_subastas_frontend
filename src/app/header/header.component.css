@@ -2,23 +2,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
+  padding: 15px 30px;
+  background-color: #ff7b00;
+  color: white;
+  box-shadow: 0 4px 8px rgba(255, 148, 48, 0.1);
 }
 
 .nav-left a {
   margin: 0;
   font-size: 1.5em;
-  color: #fff;
+  color: white;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .nav-center a, .nav-right a, .nav-right span {
-  margin: 0 10px;
-  color: #fff;
+  margin: 0 15px;
+  color: white;
   text-decoration: none;
   cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-center a:hover, .nav-right a:hover, .nav-right span:hover {
+  color: #ffe6cc;
 }
 
 .nav-right {
@@ -27,9 +34,10 @@
 }
 
 .wallet-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 a:hover, span:hover {
