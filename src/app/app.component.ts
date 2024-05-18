@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { WebSocketService } from './services/web-socket.service';
+import { WebSocketProductService } from './services/web-socket-product.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  constructor(private router: Router) {}
-  title = 'ng-chat-socket';
-  ngOnInit(): void {
-    //this.router.navigate(['/lista']);
-  }
+export class AppComponent  implements OnInit{
+  title = 'front';
 
+  constructor(private WebSocketService:WebSocketService){}
+
+  ngOnInit(){
+    this.WebSocketService.innitConnectionSocket();
+  }
 }

@@ -1,25 +1,29 @@
-import { NgModule } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { CrearSubastaComponent } from './crear-subasta/crear-subasta.component';
-import { ListaSubastasComponent } from './lista-subastas/lista-subastas.component';
-import { SubastaDetailComponent } from './subasta-detail/subasta-detail.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { CrudSubastasComponent } from './crud-subastas/crud-subastas.component';
-import { ChatComponent } from './components/chat/chat.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { LoginComponent } from "./auth/login/login.component";
+import { RegisterComponent } from "./auth/register/register.component";
+import { AddProductComponent } from "./add-product/add-product.component";
+import { SoldProductComponent } from "./sold-product/sold-product.component";
+import { AvailableProductsComponent } from "./available-products/available-products.component";
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
+import { UnsoldProductComponent } from "./unsold-product/unsold-product.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { UserAvailableProductComponent } from "./user-available-product/user-available-product.component";
 
 const routes: Routes = [
-  // Otras rutas existentes...
-  { path: 'crear', component: CrudSubastasComponent },
-  { path: 'lista', component: ListaSubastasComponent },
-  { path: 'subasta/:id', component: SubastaDetailComponent },
-  { path: 'usuarios', component: UsuariosComponent },
-  { path: 'chat/:userId', component: ChatComponent}
-
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "add-product", component: AddProductComponent },
+  { path: "sold-products", component: SoldProductComponent },
+  { path: "unsold-products", component: UnsoldProductComponent },
+  { path: "available-products", component: AvailableProductsComponent },
+  { path: "user-available-product", component: UserAvailableProductComponent },
+  { path: "", component: LoginComponent },
+  { path: "product/:id", component: ProductDetailComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

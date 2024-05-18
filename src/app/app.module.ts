@@ -1,44 +1,46 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListaSubastasComponent} from "./lista-subastas/lista-subastas.component";
-import { NavbarComponent } from './navbar/navbar.component';
-import { CrearSubastaComponent } from './crear-subasta/crear-subasta.component';
-import { HttpClientModule } from '@angular/common/http';
-import { SubastaDetailComponent } from './subasta-detail/subasta-detail.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { CrudSubastasComponent } from './crud-subastas/crud-subastas.component';
-import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
-import { SocketIoModule} from 'ngx-socket-io';
-import { ChatComponent } from './components/chat/chat.component';
-
-
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { SoldProductComponent } from './sold-product/sold-product.component';
+import { AvailableProductsComponent } from './available-products/available-products.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { UnsoldProductComponent } from './unsold-product/unsold-product.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ModalComponent } from './modal/modal.component';
+import { UserAvailableProductComponent } from './user-available-product/user-available-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaSubastasComponent,
-    NavbarComponent,
-    CrearSubastaComponent,
-    SubastaDetailComponent,
-    UsuariosComponent,
-    CrudSubastasComponent,
-    ListaUsuariosComponent,
-    ChatComponent
+    LoginComponent,
+    RegisterComponent,
+    HeaderComponent,
+    AddProductComponent,
+    SoldProductComponent,
+    AvailableProductsComponent,
+    ProductDetailComponent,
+    UnsoldProductComponent,
+    DashboardComponent,
+    ModalComponent,
+    UserAvailableProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    SocketIoModule
+    FormsModule
   ],
   providers: [
-    //provideClientHydration()
+    provideHttpClient(withFetch())
   ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }
