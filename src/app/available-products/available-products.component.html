@@ -7,8 +7,8 @@
     (click)="viewProductDetail(product.id)"
   >
     <h3>{{ product.name }}</h3>
-    <p>Price: ${{ product.price }}</p>
-    <p>Time left: {{ product.timeLeft }}</p>
+    <p>Precio: ${{ product.price }}</p>
+    <p>Tiempo Restante: {{ product.timeLeft }}</p>
     <a [routerLink]="['/product', product.id]">Entrar a la Subasta</a>
   </div>
 </div>

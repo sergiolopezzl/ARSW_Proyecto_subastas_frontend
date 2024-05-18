@@ -45,7 +45,7 @@
 .product-card a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #ff7b00;
+  background-color: #40d307;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -54,5 +54,5 @@
 }
 
 .product-card a:hover {
-  background-color: #e67300;
+  background-color: #bdffa3;
 }
